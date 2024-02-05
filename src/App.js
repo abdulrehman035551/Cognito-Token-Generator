@@ -4,6 +4,7 @@ import Auth from '@aws-amplify/auth';
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [jwtToken, setJwtToken] = useState('');
 
   Auth.configure({
     region: 'eu-central-1',
@@ -17,13 +18,12 @@ function App() {
     try {
       const user = await Auth.signIn(email, password);
       if (user) {
-        const jwtToken = user.signInUserSession.accessToken.jwtToken;
-        prompt(jwtToken)
+        const token = user.signInUserSession.accessToken.jwtToken;
+      console.log(token);
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
-      prompt(err)
+      setJwtToken(`Error: ${err.message}`);
     }
   };
 
@@ -40,13 +40,13 @@ function App() {
         />
         <input
           style={{ width: "300px", height: "20px", border: "solid", margin: "10px", borderRadius: "5PX", margin: "10PX" }}
-          lable="Eamil"
           type="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={handleLogin}>Login</button>
+      
       </div>
     </>
   );
