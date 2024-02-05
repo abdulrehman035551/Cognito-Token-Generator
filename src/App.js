@@ -18,7 +18,7 @@ function App() {
     try {
       const user = await Auth.signIn(email, password);
       if (user) {
-        const token = user.signInUserSession.accessToken.jwtToken;
+        const token = user.signInUserSession.idToken.jwtToken;
       console.log(token);
       }
     } catch (err) {
