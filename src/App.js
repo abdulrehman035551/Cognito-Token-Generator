@@ -8,8 +8,8 @@ function App() {
 
   Auth.configure({
     region: 'eu-central-1',
-    userPoolId: 'eu-central-1_8BC0qrdSp',
-    userPoolWebClientId: '7lqso2m9tdhts3gbiuebeqf5c2',
+    userPoolId: 'eu-central-1_nezidAi2V',
+    userPoolWebClientId: '7qel0vt35mbr5gfols1kccrp9d',
   });
 
   const handleLogin = async () => {
